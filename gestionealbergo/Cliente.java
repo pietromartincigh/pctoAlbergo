@@ -61,47 +61,16 @@ public class Cliente {
 
 
 
-   @Override
-
    public String toString(){
        return "\nCognome: " + cognome + "\nNome: " + nome + "\nDisabilità: " + disabilita + "\nCheck-in: " + check_in;
    }
 
 
+   public String visualizzaCliente(){
 
-   /*private String inserimentoCognome(){                //metodo inserimento cognome
-       System.out.println("\nInserire il cognome: ");
-       cognome=input.nextString();
-       return cognome;
+    return cognome+" "+nome;
    }
 
-   private String inserimentoNome(){                   //inserimento nome
-       System.out.println("\nInserire il nome: ");
-       nome=input.nextString();
-       return nome;
-   }
 
-   private String inserimentoDisabilita(){            //inserimento disabilità
-       System.out.println("\nHa qualche disabilità? \nRisponda scrivendo si oppure no: ");
-       disabilita=input.nextString();
-       return disabilita;
-   }
-
-   private String inserimentoCheckIn(){                //inserimento check_in
-
-       int giorno;
-       String mese;
-       int anno;
-
-       System.out.println("\nInserire il giorno: ");
-       giorno=input.nextInt();
-       System.out.println("\nInserire il mese: ");
-       mese=input.nextString();
-       System.out.println("\nInserire l'anno: ");
-       anno=input.nextInt();
-
-       return check_in;
-
-   }*/
 }
 
