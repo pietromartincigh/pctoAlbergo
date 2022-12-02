@@ -20,7 +20,7 @@ public class Stanza{
 
     }
 //crea la stanza di base vuota
-    public Stanza(int numero, int prezzo, Servizio servizio[], int tipo_stanza, int n_piani){
+    public Stanza(int numero, int prezzo, Servizio servizio[], int tipo_stanza){
 
         if(numero<0 || numero>100)
             throw new IllegalArgumentException("Numero stanza non disponibile;");
