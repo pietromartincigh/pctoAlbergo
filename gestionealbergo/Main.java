@@ -6,7 +6,10 @@ public class Main {
     
     private static int n_servizi;
     private static int n_piani;
+    private static Data data_attuale;
 
+
+//numero servizi
     public static void setNServizi(int n_servizi){
         Main.n_servizi=n_servizi;
     }
@@ -15,7 +18,7 @@ public class Main {
         return n_servizi;
     }
 
-
+//numero piani
     public static void setNPiani(int n_piani){
         Main.n_piani=n_piani;
     }
@@ -23,6 +26,20 @@ public class Main {
     public static int getNPiani(){
         return n_piani;
     }
+
+//prende la data del giorno attuale
+    public static String getDataAttuale(){
+        return data_attuale.toString();
+    }
+//aumenta di uno il giorno attuale (come se sia cambiato il giorno)
+    public static void procediData(){
+        Main.data_attuale.aggiungiGiorni(1);
+    }
+
+
+
+
+
 
     public static void main(String[] args){
         int n_piani;
