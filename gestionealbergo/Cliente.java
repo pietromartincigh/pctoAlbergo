@@ -1,16 +1,15 @@
 package gestionealbergo;
-import java.util.*;
 
 public class Cliente {
 
    String nome;
    String cognome;
-   String disabilita;
+   Boolean disabilita;
    String check_in;
 
    public Cliente(){}
 
-   public Cliente(String nome, String cognome, String disabilita, String check_in){
+   public Cliente(String nome, String cognome, Boolean disabilita, String check_in){
 
        this.nome=nome;
        this.cognome=cognome;
@@ -40,11 +39,11 @@ public class Cliente {
 
 
 
-   public void setDisabilta(String disabilita){
+   public void setDisabilta(Boolean disabilita){
        this.disabilita=disabilita;
    }
 
-   public String getDisabilita(){
+   public Boolean isDisabilita(){
        return disabilita;
    }
 
@@ -62,7 +61,12 @@ public class Cliente {
 
 
    public String toString(){
-       return "\nCognome: " + cognome + "\nNome: " + nome + "\nDisabilità: " + disabilita + "\nCheck-in: " + check_in;
+
+    if(disabilita==true)
+        return "\nCognome: " + cognome + "\nNome: " + nome + "\nDisabilità: si\nCheck-in: " + check_in;
+
+    else
+        return "\nCognome: " + cognome + "\nNome: " + nome + "\nDisabilità: no\nCheck-in: " + check_in;
    }
 
 
