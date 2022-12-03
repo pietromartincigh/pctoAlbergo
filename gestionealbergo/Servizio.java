@@ -11,55 +11,55 @@ public class Servizio {
     public Servizio(){}
     
 
-    public Servizio(String servizi, double prezzo, Boolean disponibile) {
-        this.servizi = servizi;
+    public Servizio(String nome, double prezzo, Boolean disponibilita) {
+        this.nome = nome;
         this.prezzo = prezzo;
-        this.disponibile = disponibile;
+        this.disponibilita = disponibilita;
     }
 
 
 
-    public void setServizi(String servizi) {
-        this.servizi = servizi;
+    public void setnome(String nome) {
+        this.nome = nome;
     }
 
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
 
-    public void setDisponibile(Boolean disponibile) {
-        this.disponibile = disponibile;
+    public void setDisponibilita(Boolean disponibilita) {
+        this.disponibilita = disponibilita;
     }
 
 
 
-    public String getServizi() {
-        return servizi;
+    public String getNome() {
+        return nome;
     }
 
     public double getPrezzo() {
         return prezzo;
     }
 
-    public boolean isDisponibile() {
-        return disponibile;
+    public boolean isDisponibilita() {
+        return disponibilita;
     }
 
 
     @Override
     public String toString() {
-        if(disponibile==true){
-            return ("il servizio "+servizi+(" costa ")+prezzo+(" ed è disponibile"));
+        if(disponibilita==true){
+            return ("il servizio "+nome+(" costa ")+prezzo+(" ed è disponibile"));
         }
         else{
-            return ("il servizio "+servizi+(" costa ")+prezzo+("  e non è disponibile"));
+            return ("il servizio "+nome+(" costa ")+prezzo+("  e non è disponibile"));
         }
     }
     
     
     public String disbonibilità(){
         
-        if(disponibile==true){
+        if(disponibilita==true){
             return "è disponibile";
         }
         else{
