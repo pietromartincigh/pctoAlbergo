@@ -55,6 +55,10 @@ public class Main {
         int contatoreStanze=0;
         String nomeServizio;
         double prezzoServizio;
+        String nome;
+        String cognome;
+        int durataAlloggio;
+
 
         Scanner input=new Scanner(System.in);
         
@@ -64,6 +68,9 @@ public class Main {
 
         Stanza[] stanze=new Stanza[n_piani*100];
         ArrayList <Servizio> servizi = new ArrayList <Servizio>();
+
+        ArrayList <Cliente> cliente = new ArrayList <Cliente>();
+
 
         for(int i=0;i<n_piani*100;i++){
             stanze[i]=new Stanza(); 
@@ -93,8 +100,10 @@ public class Main {
 
         do{
             
+
             System.out.println("0 procedere;");
             System.out.println("1 aggiungi un ulteriore stanza;");
+
             System.out.print("\nscelta: ");
             scelta=input.nextInt();
 
@@ -122,14 +131,16 @@ public class Main {
         }while(scelta!=0);
 
 
-
-
-
-    do{
+    
+        do{
             
-        int variabile;
-        Servizio temp=new Servizio();
+                int variabile;
+                Servizio temp=new Servizio();
+                
+              switch(scelta){
+               
 
+                case 1:
 
         //menù servizi
 
@@ -222,17 +233,45 @@ public class Main {
                 System.out.print("\nInserire prezzo stanza: ");
                 prezzoStanza=input.nextInt();
                 stanze[variabile].setPrezzo(prezzoStanza);
+
         
-                System.out.println("tipo 1(singola)");
-                System.out.println("tipo2(doppia)");
-                System.out.println("tipo (terzetto)");
-                System.out.println("tipo 4(quartetto)");
-                System.out.print("\nInserire tipo stanza: ");
-                tipoStanza=input.nextInt();
-                stanze[variabile].setTipoStanza(tipoStanza);
-                System.out.println("\n");
-            
-            break;
+                    System.out.println("tipo 1(singola)");
+                    System.out.println("tipo2(doppia)");
+                    System.out.println("tipo (terzetto)");
+                    System.out.println("tipo 4(quartetto)");
+                    System.out.println("\nInserire tipo stanza: ");
+                    tipoStanza=input.nextInt();
+                    stanze[contatoreStanze].setTipoStanza(tipoStanza);
+                    System.out.println("\n");
+                    contatoreStanze+=1; 
+                    break;
+                    
+                case 4:
+                        for(int i=0; i<n_piani*100;i++){
+                            System.out.println((i+1)+" "+stanze[i].toString());
+                         }    
+                        
+                        System.out.println("scegliere quale modificare: ");
+                          variabile=input.nextInt();
+                          
+                          System.out.println("\nInserire una stanza: ");
+                 System.out.println("\nInserire numero stanza: ");
+                    nStanza=input.nextInt();
+                    stanze[variabile-1].setNumero(nStanza);
+                    System.out.println("\nInserire prezzo stanza: ");
+                prezzoStanza=input.nextInt();
+                 stanze[variabile-1].setPrezzo(prezzoStanza);
+        
+                    System.out.println("tipo 1(singola)");
+                    System.out.println("tipo2(doppia)");
+                    System.out.println("tipo (terzetto)");
+                    System.out.println("tipo 4(quartetto)");
+                    System.out.println("\nInserire tipo stanza: ");
+                    tipoStanza=input.nextInt();
+                    stanze[variabile-1].setTipoStanza(tipoStanza);
+                    System.out.println("\n");
+                    break;
+
 
 
             case 5://aggiunge servizi ad una stanza 
@@ -261,6 +300,59 @@ public class Main {
 
 
             break;
+            
+            case 6:
+
+                    int disabilita;
+                    int sceltaCliente;
+                    int tempStanza;
+
+                    System.out.println("tipo 1(singola)");
+                    System.out.println("tipo 2(doppia)");
+                    System.out.println("tipo 3(terzetto)");
+                    System.out.println("tipo 4(quartetto)");
+                    System.out.println("inserire tipi di stanza:");
+                    tempStanza=input.nextInt();
+
+                    Cliente[] clienti=new Cliente[tempStanza];
+
+                    for(int i=0; i<n_piani*100;i++){
+                        if(stanze[i].getDisponibilita()==true && stanze[i].getTipoStanza()==tempStanza)
+                        System.out.println((i+1)+" "+stanze[i].visualizzaStanza());
+                     }    
+
+                    System.out.println("Scegliere il tipo di stanza che vuole il cliente:");
+                    sceltaCliente=input.nextInt()-1;
+
+                    for(int i=0;i<tempStanza;i++){
+
+                    System.out.println("Inserire nome cliente: ");
+                    nome=input.next();
+                    clienti[i].setNome(nome);
+
+                    System.out.println("Inserire cognome cliente: ");
+                    cognome=input.next();
+                    clienti[i].setCognome(cognome);
+
+                    System.out.println("Inserire disabilita(1=si, 0=no)");
+                    disabilita=input.nextInt();
+                    if(disabilita==0){
+                        clienti[i].setDisabilta(false);
+                    }
+                    if(disabilita==1){
+                        clienti[i].setDisabilta(true); 
+                    }
+
+                    System.out.println("Inserire durata alloggio del cliente : ");
+                    durataAlloggio=input.nextInt();
+
+                    cliente.add(clienti[i]);
+                    stanze[sceltaCliente].accettazioneStanza(clienti, durataAlloggio);
+                    
+
+                }
+
+                    break;
 
 
             case 7://visualizza stanze
