@@ -23,7 +23,7 @@ public class Stanza{
 
     }
 //crea la stanza di base vuota
-    public Stanza(int numero, int prezzo, Servizio servizio[], int tipo_stanza){
+    public Stanza(int numero, int prezzo, int tipo_stanza){
 
         if(numero<0 || numero>100)
             throw new IllegalArgumentException("Numero stanza non disponibile;");
@@ -131,18 +131,24 @@ public class Stanza{
     public int getDurataAll(){
         return durata_alloggiamento;
     }
+
+
+//to String
+    public String toString(){
+        return "Stanza n° "+numero+" piano "+piano;
+    }
     
     
     
 //permette di prendere la stanza per il giorno corrente
     public void accettazioneStanza(Cliente[] clienti, int durata_alloggiamento){
 
-        this.data=new Data();
+        this.data=Main.getDataAttuale();
 
         if(durata_alloggiamento<0)
             throw new IllegalArgumentException("La durata del alloggiamento non può essere negativo");
 
-        this.checkin=data.toString();
+        this.checkin=Main.getDataAttualeString();
         this.disponibilita=false;
         this.checkout=data.aggiungiGiorni(durata_alloggiamento);
 
@@ -177,6 +183,13 @@ public class Stanza{
         this.disponibilita=true;
         clienti.clear();
     }
+
+
+//visualizza tutta la stanza
+    public String visualizzaStanza(){
+
+        return "Stanza n°"+numero+", piano "+piano+", prezzo: "+prezzo+"e/notte, tipo stanza: "+tipo_stanza;
+     }
 
 
 
