@@ -137,18 +137,17 @@ public class Main {
                 int variabile;
                 Servizio temp=new Servizio();
                 
-              switch(scelta){
-               
-
-                case 1:
 
         //menù servizi
+
+        scelta=input.nextInt();
 
         switch(scelta){
                
 
             case 1://inserimento servizio
                 
+                input.nextLine();
                 System.out.println("inserire nome servizio: ");
                 nomeServizio=input.nextLine();
                 temp.setnome(nomeServizio);
@@ -172,6 +171,7 @@ public class Main {
                 System.out.println("scegliere quale modificare: ");
                 variabile=input.nextInt()-1;
 
+                input.nextLine();
                 System.out.println("inserire nome servizio: ");
                 nomeServizio=input.nextLine();
                 temp.setnome(nomeServizio);
@@ -214,12 +214,11 @@ public class Main {
                 tipoStanza=input.nextInt();
                 stanze[contatoreStanze].setTipoStanza(tipoStanza);
                 System.out.println("\n");
-                contatoreStanze+=1; 
             break;
 
                     
             case 4://modifica stanza
-                for(int i=0; i<n_piani*100;i++){
+                for(int i=0; i<contatoreStanze;i++){
                     System.out.println((i+1)+" "+stanze[i].toString());
                 }    
                         
@@ -246,31 +245,6 @@ public class Main {
                     contatoreStanze+=1; 
                     break;
                     
-                case 4:
-                        for(int i=0; i<n_piani*100;i++){
-                            System.out.println((i+1)+" "+stanze[i].toString());
-                         }    
-                        
-                        System.out.println("scegliere quale modificare: ");
-                          variabile=input.nextInt();
-                          
-                          System.out.println("\nInserire una stanza: ");
-                 System.out.println("\nInserire numero stanza: ");
-                    nStanza=input.nextInt();
-                    stanze[variabile-1].setNumero(nStanza);
-                    System.out.println("\nInserire prezzo stanza: ");
-                prezzoStanza=input.nextInt();
-                 stanze[variabile-1].setPrezzo(prezzoStanza);
-        
-                    System.out.println("tipo 1(singola)");
-                    System.out.println("tipo2(doppia)");
-                    System.out.println("tipo (terzetto)");
-                    System.out.println("tipo 4(quartetto)");
-                    System.out.println("\nInserire tipo stanza: ");
-                    tipoStanza=input.nextInt();
-                    stanze[variabile-1].setTipoStanza(tipoStanza);
-                    System.out.println("\n");
-                    break;
 
 
 
@@ -278,7 +252,7 @@ public class Main {
 
                 int j=0;
                     
-                for(int i=0; i<n_piani*100;i++){
+                for(int i=0; i<contatoreStanze;i++){
                     System.out.println((i+1)+" "+stanze[i].toString());
                 }    
                     
@@ -291,10 +265,10 @@ public class Main {
                     System.out.print("\n"+(i+1)+" "+servizi.get(i).toString());
 
                     System.out.print("\nServizio scelto: ");
-                    int tempor=input.nextInt()-1;
+                    int tempor=input.nextInt();
 
                     if(tempor>0)
-                    stanze[variabile].aggiungiServizio(servizi.get(tempor));
+                    stanze[variabile].aggiungiServizio(servizi.get(tempor-1));
 
                 }while(j!=0);
 
@@ -316,7 +290,7 @@ public class Main {
 
                     Cliente[] clienti=new Cliente[tempStanza];
 
-                    for(int i=0; i<n_piani*100;i++){
+                    for(int i=0; i<contatoreStanze;i++){
                         if(stanze[i].getDisponibilita()==true && stanze[i].getTipoStanza()==tempStanza)
                         System.out.println((i+1)+" "+stanze[i].visualizzaStanza());
                      }    
@@ -386,15 +360,15 @@ public class Main {
         }while(scelta!=0);
 
 
-
+/* 
         for(int i=0; i<contatoreStanze; i++){
 
             if(Main.getDataAttualeString().equals(stanze[i].getCheckOut())==true);
             stanze[i].liberaStanza();
 
         }
-        
-        }
+ */       
 
 
     }
+}
